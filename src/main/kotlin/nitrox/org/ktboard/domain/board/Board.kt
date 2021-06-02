@@ -21,4 +21,18 @@ data class Board(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Lon
             else -> false
         }
     }
+
+    fun allTasks(): List<Task> {
+        var tasksBoard = listOf<Task>()
+        if(columns != null && columns!!.isNotEmpty()) {
+            tasksBoard = columns!!.flatMap {
+                if (it.tasks != null) {
+                    it.tasks!!
+                } else {
+                    listOf<Task>()
+                }
+            }
+        }
+        return tasksBoard
+    }
 }

@@ -16,7 +16,7 @@ class BoardService(val boardRepository: BoardRepository) {
             board.archieved = true
             boardRepository.save(board)
         } else {
-            throw RuntimeException("Quadro não é possivel de arquivar")
+            throw RuntimeException("Não é possivel de arquivar esse quadro, ainda possui tarefas ativas")
         }
     }
 }
