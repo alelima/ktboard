@@ -2,7 +2,6 @@ package nitrox.org.ktboard.application.rest
 
 import nitrox.org.ktboard.application.rest.form.BoardForm
 import nitrox.org.ktboard.application.service.BoardService
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
@@ -16,7 +15,7 @@ class BoardController(val boardService: BoardService) {
     }
 
     @PutMapping("/archieve/{id}")
-    fun archieve(@PathVariable id: Long) { //colocar BoletoDTO depois
-        boardService.achieveBoard(id)
+    fun finish(@PathVariable id: Long) { //colocar BoletoDTO depois
+        boardService.finishBoard(id)
     }
 }

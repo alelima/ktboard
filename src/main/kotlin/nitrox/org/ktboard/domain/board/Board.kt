@@ -12,9 +12,9 @@ data class Board(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Lon
     @OneToMany(mappedBy = "board", cascade=[CascadeType.PERSIST])
     var columns: List<Column>? = null
 
-    var archieved = false;
+    var archieved = false
 
-    fun isArchievable(): Boolean {
+    fun isFinishable(): Boolean {
         return when {
             this.columns == null || this.columns!!.isEmpty()-> true
             this.columns!!.size > 0 && this.columns!!.none{it.hasActiveTasks()} -> true

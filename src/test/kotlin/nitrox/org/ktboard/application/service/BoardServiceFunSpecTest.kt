@@ -35,7 +35,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             every { boardRepository.save(board)} returns board
             every { boardRepository.findByIdOrNull(1L)} returns board
 
-            val resultBoad = boardService.achieveBoard(1L)
+            val resultBoad = boardService.finishBoard(1L)
 
             resultBoad!!.id shouldBeExactly board.id
             resultBoad!!.name shouldBe board.name
@@ -49,7 +49,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             every { boardRepository.save(board)} returns board
             every { boardRepository.findByIdOrNull(1L)} returns board
 
-            val resultBoad = boardService.achieveBoard(1L)
+            val resultBoad = boardService.finishBoard(1L)
 
             resultBoad!!.id shouldBeExactly board.id
             resultBoad!!.name shouldBe board.name
@@ -69,7 +69,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             every { boardRepository.save(board)} returns board
             every { boardRepository.findByIdOrNull(1L)} returns board
 
-            val resultBoad = boardService.achieveBoard(1L)
+            val resultBoad = boardService.finishBoard(1L)
 
             resultBoad!!.id shouldBeExactly board.id
             resultBoad!!.name shouldBe board.name
@@ -88,7 +88,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             every { boardRepository.findByIdOrNull(1L)} returns board
 
             val exception = shouldThrow<RuntimeException> {
-                boardService.achieveBoard(1L)
+                boardService.finishBoard(1L)
             }
 
             verify(exactly = 0) { boardRepository.save(board) }

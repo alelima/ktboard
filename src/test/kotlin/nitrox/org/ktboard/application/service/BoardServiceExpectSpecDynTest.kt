@@ -46,7 +46,7 @@ internal class BoardServiceExpectSpecDynTest(boardService: BoardService) : KBoar
                 every { boardRepository.save(board)} returns board
                 every { boardRepository.findByIdOrNull(index.toLong())} returns board
 
-                val resultBoad = boardService.achieveBoard(index.toLong())
+                val resultBoad = boardService.finishBoard(index.toLong())
                 resultBoad!!.id shouldBeExactly board.id
                 resultBoad!!.name shouldBe board.name
             }

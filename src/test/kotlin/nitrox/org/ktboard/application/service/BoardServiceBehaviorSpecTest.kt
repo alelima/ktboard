@@ -1,20 +1,15 @@
 package nitrox.org.ktboard.application.service
 
-import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.test.TestCase
 import io.kotest.matchers.longs.shouldBeExactly
 import io.kotest.matchers.shouldBe
-import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import nitrox.org.ktboard.domain.board.Board
 import nitrox.org.ktboard.infrastructure.bd.BoardRepositoryJPA
-import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
 import java.time.LocalDateTime
 
 // BDD Frameworks Gherkin style
@@ -42,7 +37,7 @@ internal class BoardServiceBehaviorSpecTest : BehaviorSpec() {
                     every { boardRepository.save(board)} returns board
                     every { boardRepository.findByIdOrNull(1L)} returns board
 
-                    val resultBoad = boardService.achieveBoard(1L)
+                    val resultBoad = boardService.finishBoard(1L)
 
                     then(" o quadro será arquivado e desaparece da listagem de quadros.") {
 

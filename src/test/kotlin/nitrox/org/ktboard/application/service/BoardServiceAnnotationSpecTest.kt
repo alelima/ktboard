@@ -1,9 +1,7 @@
 package nitrox.org.ktboard.application.service
 
-import com.ninjasquad.springmockk.MockkBean
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.AnnotationSpec
-import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.longs.shouldBeExactly
 import io.kotest.matchers.should
@@ -11,16 +9,12 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.startWith
 import io.mockk.clearMocks
 import io.mockk.every
-import io.mockk.junit5.MockKExtension
 import io.mockk.mockk
 import io.mockk.verify
 import nitrox.org.ktboard.domain.board.Board
 import nitrox.org.ktboard.domain.board.Column
 import nitrox.org.ktboard.domain.board.Task
 import nitrox.org.ktboard.infrastructure.bd.BoardRepositoryJPA
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.LocalDateTime
 
 //JUnit classic style
@@ -37,20 +31,20 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
     }
 
     @Test
-    fun achieveBoardWithNoColumns() {
+    fun finishBoardWithNoColumns() {
         val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
 
         every { boardRepository.save(board)} returns board
         every { boardRepository.findByIdOrNull(1L)} returns board
 
-        val resultBoad = boardService.achieveBoard(1L)
+        val resultBoad = boardService.finishBoard(1L)
 
         resultBoad!!.id shouldBeExactly board.id
-        resultBoad!!.name shouldBe board.name
+        resultBoad.name shouldBe board.name
     }
 
     @Test
-    fun achieveBoardWithColumnsAndNoTasks() {
+    fun finishBoardWithColumnsAndNoTasks() {
         val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
         val column = Column(1L, "Backlog", LocalDateTime.now())
         board.columns = listOf<Column>(column)
@@ -58,14 +52,14 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
         every { boardRepository.save(board)} returns board
         every { boardRepository.findByIdOrNull(1L)} returns board
 
-        val resultBoad = boardService.achieveBoard(1L)
+        val resultBoad = boardService.finishBoard(1L)
 
         resultBoad!!.id shouldBeExactly board.id
-        resultBoad!!.name shouldBe board.name
+        resultBoad.name shouldBe board.name
     }
 
     @Test
-    fun achieveBoardWithColumnsAndNoActiveTasks() {
+    fun finishBoardWithColumnsAndNoActiveTasks() {
         val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
         val column = Column(1L, "Backlog", LocalDateTime.now())
         val finalizedTask = Task(1L, "Contruir serviço x", "contruir serviço necessário",
@@ -79,15 +73,15 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
         every { boardRepository.save(board)} returns board
         every { boardRepository.findByIdOrNull(1L)} returns board
 
-        val resultBoad = boardService.achieveBoard(1L)
+        val resultBoad = boardService.finishBoard(1L)
 
         resultBoad!!.id shouldBeExactly board.id
-        resultBoad!!.name shouldBe board.name
+        resultBoad.name shouldBe board.name
         finalizedTask shouldBeIn resultBoad.allTasks()
     }
 
     @Test
-    fun achieveBoardWithColumnsAndActiveTasks() {
+    fun finishBoardWithColumnsAndActiveTasks() {
         val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
         val column = Column(1L, "Backlog", LocalDateTime.now())
         val activeTask = Task(1L, "Contruir serviço x", "contruir serviço necessário",
@@ -104,7 +98,7 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
         every { boardRepository.findByIdOrNull(1L)} returns board
 
         val exception = shouldThrow<RuntimeException> {
-            boardService.achieveBoard(1L)
+            boardService.finishBoard(1L)
         }
 
         verify(exactly = 0) { boardRepository.save(board) }
