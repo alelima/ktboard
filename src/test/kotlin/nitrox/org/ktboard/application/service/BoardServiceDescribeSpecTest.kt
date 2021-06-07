@@ -10,15 +10,18 @@ import org.junit.jupiter.api.Assertions.*
 internal class BoardServiceDescribeSpecTest : DescribeSpec() {
 
     init {
-        describe("Archive unused boards") {
-            it("with no columns") {
-                println("Teste 1")
+        describe("Arquivar quadros sem uso") {
+            it("sem colunas") {
+
             }
-            it("columns with finalized tasks") {
-                println("Teste 2")
+            it(" com colunas e sem tarefas") {
+
             }
-            it("columns with active tasks") {
-                println("Teste 3")
+            it("sem colunas e com tarefas finalizadas") {
+
+            }
+            it("sem colunas e com tarefas ativas") {
+
             }
         }
 

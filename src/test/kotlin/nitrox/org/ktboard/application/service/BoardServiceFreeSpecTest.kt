@@ -9,20 +9,25 @@ import org.junit.jupiter.api.Assertions.*
 internal class BoardServiceFreeSpecTest : FreeSpec() {
 
     init {
-        "Archive unused boards " - {
-            "with no columns" - {
-                "archive with sucess" {
-                    println("Teste 1")
+        "Arquivar Quadros sem uso " - {
+            "sem colunas" - {
+                "com sucesso" {
+
                 }
             }
-            "with columns with finalized tasks" - {
-                "archive with sucess" {
-                    println("Teste 2")
+            "com colunas e sem tarefas" - {
+                "com sucesso" {
+
                 }
             }
-            "with columns with active tasks" - {
-                "fail in archive" {
-                    println("Teste 3")
+            "com colunas e com tarefas finalizadas" - {
+                "com sucesso" {
+
+                }
+            }
+            "com colunas e com tarefas ativas" - {
+                "não deve ser permitido" {
+
                 }
             }
         }

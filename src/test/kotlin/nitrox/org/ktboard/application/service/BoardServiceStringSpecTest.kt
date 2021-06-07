@@ -10,15 +10,19 @@ internal class BoardServiceStringSpecTest : StringSpec() {
 
     init {
 
-        "Archive Boards with no columns" {
+       "Arquivar quadros sem colunas" {
 
         }
 
-        "Archive Boards with columns and finalized tasks" {
+        "Arquivar quadros com colunas e sem tarefas" {
 
         }
 
-        "Archive Boards with columns and active tasks" {
+        "Arquivar quadros sem colunas e com tarefas finalizadas" {
+
+        }
+
+        "Arquivar quadros sem colunas e com tarefas ativas" {
 
         }
     }

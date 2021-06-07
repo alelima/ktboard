@@ -19,7 +19,7 @@ import java.time.LocalDateTime
 
 @ExtendWith(SpringExtension::class, MockKExtension::class)
 @SpringBootTest
-internal class BoardServiceExpectSpecTest(boardService: BoardService) : KBoardExpectSpec() {
+internal class BoardServiceExpectSpecDynTest(boardService: BoardService) : KBoardExpectSpec() {
 
     @MockkBean
     private lateinit var boardRepository: BoardRepositoryJPA

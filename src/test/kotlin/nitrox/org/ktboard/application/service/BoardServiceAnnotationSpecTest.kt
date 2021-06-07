@@ -24,8 +24,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.LocalDateTime
 
 //JUnit classic style
-@ExtendWith(SpringExtension::class, MockKExtension::class)
-@SpringBootTest
 internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
 
     private lateinit var boardService: BoardService

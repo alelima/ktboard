@@ -28,7 +28,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
     private lateinit var boardRepository: BoardRepositoryJPA
 
     init {
-        test("Archive Boards with no columns").config(invocations = 3) {
+        test("Arquivar quadros sem colunas") {
 
             val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
 
@@ -41,7 +41,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             resultBoad!!.name shouldBe board.name
         }
 
-        test("Archive Boards with columns and no tasks") {
+        test("Arquivar quadros com colunas e sem tarefas") {
             val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
             val column = Column(1L, "Backlog", LocalDateTime.now())
             board.columns = listOf<Column>(column)
@@ -55,7 +55,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             resultBoad!!.name shouldBe board.name
         }
 
-        test("Archive Boards with columns and no active tasks") {
+        test("Arquivar quadros sem colunas e com tarefas finalizadas").config(invocations = 3) {
             val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
             val column = Column(1L, "Backlog", LocalDateTime.now())
             board.columns = listOf<Column>(column)
@@ -76,7 +76,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             finalizedTask shouldBeIn resultBoad.allTasks()
         }
 
-        test("Archive Boards with columns and active tasks") {
+        test("Arquivar quadros sem colunas e com tarefas ativas") {
             val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
             val column = Column(1L, "Backlog", LocalDateTime.now())
             val activeTask = Task(1L, "Contruir serviço x", "contruir serviço necessário",

@@ -10,19 +10,24 @@ import org.junit.jupiter.api.Assertions.*
 internal class BoardServiceWordSpecTest : WordSpec() {
 
     init {
-        "Archive unused boards " When {
-            "with no columns" should {
-                "archive with sucess" {
+        "Arquivar quadros sem uso " When {
+            "sem colunas" should {
+                "com sucesso" {
 
                 }
             }
-            "with columns with finalized tasks" should {
-                "archive with sucess" {
+            "com colunas e sem tarefas" should {
+                "com sucesso" {
 
                 }
             }
-            "with columns with active tasks" should {
-                "fail in archive" {
+            "com colunas e com tarefas finalizadas" should {
+                "com sucesso" {
+
+                }
+            }
+            "com colunas e com tarefas ativas" should {
+                "não deve ser permitido" {
 
                 }
             }

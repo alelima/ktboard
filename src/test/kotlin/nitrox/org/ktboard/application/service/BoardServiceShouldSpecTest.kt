@@ -9,15 +9,19 @@ import org.junit.jupiter.api.Assertions.*
 internal class BoardServiceShouldSpecTest : ShouldSpec() {
 
     init {
-        should("Archive Boards with no columns") {
+        should("Arquivar quadros sem colunas") {
 
         }
 
-        should("Archive Boards with columns and finalized tasks") {
+        should("Arquivar quadros com colunas e sem tarefas") {
 
         }
 
-        should("Archive Boards with columns and active tasks") {
+        should("Arquivar quadros sem colunas e com tarefas finalizadas") {
+
+        }
+
+        should("Arquivar quadros sem colunas e com tarefas ativas") {
 
         }
 
