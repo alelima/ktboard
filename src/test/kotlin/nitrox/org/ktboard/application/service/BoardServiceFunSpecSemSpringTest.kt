@@ -26,7 +26,7 @@ import java.time.LocalDateTime
 
 @ExtendWith(MockKExtension::class)
 @SpringBootTest
-internal class BoardServiceFunSpecSpringTest(boardService: BoardService) : FunSpec() {
+internal class BoardServiceFunSpecSemSpringTest(boardService: BoardService) : FunSpec() {
 
     override fun extensions() = listOf(SpringExtension)
 
@@ -47,6 +47,7 @@ internal class BoardServiceFunSpecSpringTest(boardService: BoardService) : FunSp
 
             val resultBoad = boardService.finishBoard(1L)
 
+            verify { boardRepository.save(board) }
             resultBoad!!.id shouldBeExactly board.id
             resultBoad!!.name shouldBe board.name
         }
