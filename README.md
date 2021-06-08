@@ -9,3 +9,5 @@ https://kotlinlang.org/
 https://kotest.io/
 
 https://mockk.io/
+
+https://github.com/Ninja-Squad/springmockk
