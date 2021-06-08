@@ -11,7 +11,7 @@ class BoardService(val boardRepository: BoardRepository) {
     fun finishBoard(boardId: Long) : Board? {
         val board = boardRepository.findByIdOrNull(boardId)
         return if(board != null && board.isFinishable()) {
-            board.archieved = true
+            board.finished = true
             boardRepository.save(board)
         } else {
             throw RuntimeException("Não é possivel arquivar esse quadro")

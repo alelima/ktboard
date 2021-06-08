@@ -17,7 +17,6 @@ import nitrox.org.ktboard.domain.board.Task
 import nitrox.org.ktboard.infrastructure.bd.BoardRepositoryJPA
 import java.time.LocalDateTime
 
-//JUnit classic style
 internal class BoardServiceAnnotationSpecSpringTest : AnnotationSpec() {
 
     private lateinit var boardService: BoardService
