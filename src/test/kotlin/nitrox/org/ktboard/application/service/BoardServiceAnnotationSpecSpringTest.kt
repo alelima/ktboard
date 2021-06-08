@@ -101,7 +101,7 @@ internal class BoardServiceAnnotationSpecSpringTest : AnnotationSpec() {
         }
 
         verify(exactly = 0) { boardRepository.save(board) }
-        exception.message should startWith("Não é possivel arquivar esse quadro")
+        exception.message should startWith("Não é possivel arquivar")
     }
 
 }
