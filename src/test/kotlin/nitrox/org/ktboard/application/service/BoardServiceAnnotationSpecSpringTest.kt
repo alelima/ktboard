@@ -38,6 +38,7 @@ internal class BoardServiceAnnotationSpecSpringTest : AnnotationSpec() {
 
         val resultBoad = boardService.finishBoard(1L)
 
+        verify { boardRepository.save(board) }
         resultBoad!!.id shouldBeExactly board.id
         resultBoad.name shouldBe board.name
     }
