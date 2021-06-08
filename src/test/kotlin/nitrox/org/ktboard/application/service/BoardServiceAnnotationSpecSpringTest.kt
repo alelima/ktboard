@@ -18,10 +18,9 @@ import nitrox.org.ktboard.infrastructure.bd.BoardRepositoryJPA
 import java.time.LocalDateTime
 
 //JUnit classic style
-internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
+internal class BoardServiceAnnotationSpecSpringTest : AnnotationSpec() {
 
     private lateinit var boardService: BoardService
-
     private val boardRepository: BoardRepositoryJPA = mockk<BoardRepositoryJPA>()
 
     @BeforeEach
@@ -102,7 +101,7 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
         }
 
         verify(exactly = 0) { boardRepository.save(board) }
-        exception.message should startWith("Não é possivel de arquivar esse quadro")
+        exception.message should startWith("Não é possivel arquivar esse quadro")
     }
 
 }

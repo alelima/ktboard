@@ -2,6 +2,8 @@ package nitrox.org.ktboard.application.service
 
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.longs.shouldBeExactly
 import io.kotest.matchers.should
@@ -20,9 +22,11 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.LocalDateTime
 
-@ExtendWith(SpringExtension::class, MockKExtension::class)
+@ExtendWith(MockKExtension::class)
 @SpringBootTest
-internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSpec() {
+internal class BoardServiceFunSpecSpringTest(boardService: BoardService) : FunSpec() {
+
+    override fun extensions() = listOf(SpringExtension)
 
     @MockkBean
     private lateinit var boardRepository: BoardRepositoryJPA
@@ -92,7 +96,7 @@ internal class BoardServiceFunSpecTest(boardService: BoardService) : KBoardFunSp
             }
 
             verify(exactly = 0) { boardRepository.save(board) }
-            exception.message should startWith("Não é possivel de arquivar esse quadro")
+            exception.message should startWith("Não é possivel arquivar esse quadro")
         }
     }
 }
