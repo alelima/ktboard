@@ -3,12 +3,14 @@ package nitrox.org.ktboard.application.service
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.core.test.TestCase
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.longs.shouldBeExactly
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.startWith
+import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.junit5.MockKExtension
 import io.mockk.verify
@@ -31,8 +33,12 @@ internal class BoardServiceFunSpecSpringTest(boardService: BoardService) : FunSp
     @MockkBean
     private lateinit var boardRepository: BoardRepositoryJPA
 
+    override fun beforeTest(testCase: TestCase) {
+        clearMocks(boardRepository)
+    }
+
     init {
-        test("Arquivar quadros sem colunas") {
+        test("Arquivar quadros sem colunas").config(invocations = 3) {
 
             val board = Board(1L, "Projeto X", "Projeto do produto X", LocalDateTime.now())
 

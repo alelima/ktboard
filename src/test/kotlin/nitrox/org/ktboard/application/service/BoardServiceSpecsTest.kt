@@ -7,38 +7,32 @@ internal class BoardServiceAnnotationSpecTest : AnnotationSpec() {
 
     @BeforeEach
     fun setUp() {
-
     }
 
     @AfterEach
     fun tearDown() {
-
     }
 
     @Test
     fun finishBoardWithNoColumns() {
-
     }
 
     @Test
     fun finishBoardWithColumnsAndNoTasks() {
-
     }
 
     @Test
     fun finishBoardWithColumnsAndNoActiveTasks() {
-
     }
 
     @Test
     fun finishBoardWithColumnsAndActiveTasks() {
-
     }
 }
 
 internal class BoardServiceFunSpecTest : FunSpec() {
     init {
-        test("Arquivar quadros sem colunas").config(invocations = 3) {
+        test("Arquivar quadros sem colunas") {
 
         }
 
@@ -57,7 +51,6 @@ internal class BoardServiceFunSpecTest : FunSpec() {
 }
 
 internal class BoardServiceShouldSpecTest : ShouldSpec() {
-
     init {
         should("Arquivar quadros sem colunas") {
 
@@ -74,7 +67,6 @@ internal class BoardServiceShouldSpecTest : ShouldSpec() {
         should("Arquivar quadros sem colunas e com tarefas ativas") {
 
         }
-
     }
 }
 
@@ -83,15 +75,12 @@ internal class BoardServiceExpectSpecTest : ExpectSpec() {
         expect ("Arquivar quadros sem colunas") {
 
         }
-
         expect("Arquivar quadros com colunas e sem tarefas") {
 
         }
-
         expect("Arquivar quadros sem colunas e com tarefas finalizadas").config(invocations = 3) {
 
         }
-
         expect("Arquivar quadros sem colunas e com tarefas ativas") {
 
         }
@@ -99,21 +88,16 @@ internal class BoardServiceExpectSpecTest : ExpectSpec() {
 }
 
 internal class BoardServiceStringSpecTest : StringSpec() {
-
     init {
-
         "Arquivar quadros sem colunas" {
 
         }
-
         "Arquivar quadros com colunas e sem tarefas" {
 
         }
-
         "Arquivar quadros sem colunas e com tarefas finalizadas" {
 
         }
-
         "Arquivar quadros sem colunas e com tarefas ativas" {
 
         }
@@ -125,7 +109,6 @@ internal class BoardServiceDescribeSpecTest : DescribeSpec() {
 
     init {
         describe("Arquivar quadros sem uso") {
-
             it("sem colunas") {
 
             }
@@ -139,13 +122,11 @@ internal class BoardServiceDescribeSpecTest : DescribeSpec() {
 
             }
         }
-
     }
 }
 
 //ScalaTest style
 internal class BoardServiceWordSpecTest : WordSpec() {
-
     init {
         "Arquivar quadros sem uso " When {
             "sem colunas" should {
@@ -173,7 +154,6 @@ internal class BoardServiceWordSpecTest : WordSpec() {
 }
 
 internal class BoardServiceFreeSpecTest : FreeSpec() {
-
     init {
         "Arquivar Quadros sem uso " - {
             "sem colunas" - {
@@ -202,7 +182,6 @@ internal class BoardServiceFreeSpecTest : FreeSpec() {
 
 // Cucumber Style
 internal class BoardServiceFeatureSpecTest : FeatureSpec() {
-
     init {
         feature("Quadro") {
             scenario("Arquivar Quadro Kanban sem colunas") {
@@ -220,7 +199,6 @@ internal class BoardServiceFeatureSpecTest : FeatureSpec() {
 
 // BDD Frameworks Gherkin style
 internal class BoardServiceBehaviorSpecTest : BehaviorSpec() {
-
     init {
         given("que o usuário tenha o perfil de gestor de quadro") {
             and(" o quadro não possui colunas") {
